@@ -55,9 +55,9 @@
                 11839.8215267723,   12543.853951415975];
 
                 document.getElementById("midiCalcBtn").addEventListener("click", function() {
-                    var input = document.getElementById("midiNote").value;
+                    var input = parseInt(document.getElementById("midiNote").value);
                     console.log(input);
-                    if(typeof input === 'number') {
+                    if(input !== NaN) {
                         if(input >= 0 && input <= 127) {
                             document.getElementById("showMidiNote").innerHTML = allFrequencies[input];
                         } else {
