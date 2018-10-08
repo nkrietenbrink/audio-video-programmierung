@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <style>
+        .block {
+            width: 50vw;
+            height: 50vh;
+        }
+        #block1 {
+            background-color: aquamarine;
+            top: 0;
+            left: 0;
+        }
+        #block2 {
+            background-color:rgb(41, 82, 100);
+            top: 0;
+            left: 25vw;
+        }
+        #block3 {
+            background-color: rgb(17, 141, 100);
+            top: 25vh;
+            left: 0;
+        }
+        #block4 {
+            background-color:rgb(42, 165, 124);
+            top: 25vh;
+            left: 25vw;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="block1" class="block"></div>
+        <div id="block2" class="block"></div>
+        <div id="block3" class="block"></div>
+        <div id="block4" class="block"></div>
+
+
+        <script>
+            
+            var context = new AudioContext(),
+    drumpads = document.getElementsByClassName("block"),
+    soundBuffers = [];
+
+for (let i = 0; i < drumpads.length; i++) {
+    soundBuffers[i] = new Audio("sound" + (i+1) + ".wav");
+    var soundNode = context.createMediaElementSource(soundBuffers[i]);
+    var gainNode = context.createGain();
+
+    gainNode.gain.value = 0.8;
+
+    soundNode.connect(gainNode);
+    gainNode.connect(context.destination);
+
+    drumpads[i].addEventListener("mousedown", function (e) {playSound(i)});
+}
+
+function playSound(i) {
+    soundBuffers[i].play();
+}
+            </script>
+    </body>
+</html>
