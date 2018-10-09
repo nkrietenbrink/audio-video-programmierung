@@ -55,7 +55,7 @@ document.body.addEventListener('mousemove', function(e){
     var gainValue = ((e.clientY * 100) / window.innerHeight);
     //console.log(value);
     //console.log(((e.clientY * 100) / window.innerHeight) / 100);
-    document.body.style.backgroundColor = "hsl(" + ((frequenzValue * 360) / 127)  +", 100%, "+ gainValue + "%)";
+    document.body.style.backgroundColor = "hsl( 10, " + ((frequenzValue * 100) / 127) + "%, "+ gainValue + "%)";
     gainNode.gain.value = gainValue / 100;
     oscillatorNode.frequency.value = allFrequencies[frequenzValue];
 
